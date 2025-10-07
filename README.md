@@ -1,25 +1,23 @@
-# Contact Extractor Chatbot — Google Gemini + LangChain + Pydantic
+# Contact Extractor — Gemini + LangChain + Pydantic
 
-A beginner-friendly **chatbot** that extracts clean **contact JSON** (name, age, email, phone) from messy text using:
-- **Google Gemini 2.5** (`google.generativeai`)
-- **LangChain** (prompt orchestration + structured output)
-- **Pydantic** (JSON validation)
-- **phonenumbers** (E.164 phone normalization)
-- **Email autocorrect** (regex → LLM fallback)
-## 🏛️ Project Structure
+Extract contact info (name, age, email, phone) from messages using:
+- Google Gemini 2.5 (`google.generativeai`)
+- LangChain + Pydantic structured output
+- FastAPI & Streamlit UI
+- Docker container
 
-The project is organized into logical modules for clarity and maintainability:
+## Run Locally
 
+```bash
+cp .env.example .env
+streamlit run src/app_streamlit.py
+# or:
+uvicorn src.app_fastapi:app --reload --port 8000
 ```
-/gemini-contact-extractor
-|
-├── app.py                  # Main application: Gradio UI and core logic
-├── models.py               # Pydantic data model for a 'Person'
-├── extraction.py           # LangChain logic for extracting information
-├── validation_utils.py     # Helper functions for phone/email validation & correction
-|
-├── requirements.txt        # List of all Python dependencies
-├── .env.example            # Example environment file for the API key
-├── README.md               # You are here!
-└── .gitignore              # To exclude unnecessary files from Git
+
+## Docker
+
+```bash
+docker build -t contact-bot .
+docker run --env-file .env -p 8000:8000 -p 8501:8501 contact-bot
 ```

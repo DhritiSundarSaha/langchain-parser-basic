@@ -1,16 +1,6 @@
-# Python
+.env
+*.env
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-pip-selfcheck.json
-
-# Environment variables
-.env
-
-# IDE settings
-.idea/
-.vscode/
+.DS_Store
+.ipynb_checkpoints/
